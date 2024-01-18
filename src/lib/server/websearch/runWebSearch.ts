@@ -96,6 +96,8 @@ export async function runWebSearch(
 			throw new Error("No results found for this search query");
 		}
 
+		console.log("before Extracting relevant information")
+
 		appendUpdate("Extracting relevant information");
 		const topKClosestParagraphs = 8;
 		const texts = paragraphChunks.map(({ text }) => text);
