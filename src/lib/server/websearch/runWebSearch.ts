@@ -122,6 +122,8 @@ export async function runWebSearch(
 			message: "sources",
 			sources: webSearch.contextSources,
 		});
+
+		console.log("webSearch.contextSources", webSearch.contextSources)
 	} catch (searchError) {
 		if (searchError instanceof Error) {
 			appendUpdate(
