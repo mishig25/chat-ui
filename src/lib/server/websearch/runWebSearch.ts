@@ -134,6 +134,7 @@ export async function runWebSearch(
 				["some error"],
 				"error"
 			);
+		}
 	}
 
 	return webSearch;
