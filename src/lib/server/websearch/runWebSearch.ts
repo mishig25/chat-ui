@@ -96,17 +96,13 @@ export async function runWebSearch(
 			throw new Error("No results found for this search query");
 		}
 
-		console.log("before Extracting relevant information")
-
-		appendUpdate("Extracting relevant information 4");
+		appendUpdate("Extracting relevant information 5");
 		const topKClosestParagraphs = 8;
 		const texts = paragraphChunks.map(({ text }) => text);
 		const indices = await findSimilarSentences(embeddingModel, prompt, texts, {
 			topK: topKClosestParagraphs,
 		});
 		webSearch.context = indices.map((idx) => texts[idx]).join("");
-
-		console.log("webSearch.context", webSearch.context)
 
 		const usedSources = new Set<string>();
 		for (const idx of indices) {
@@ -122,8 +118,6 @@ export async function runWebSearch(
 			message: "sources",
 			sources: webSearch.contextSources,
 		});
-
-		console.log("webSearch.contextSources", webSearch.contextSources)
 	} catch (searchError) {
 		if (searchError instanceof Error) {
 			appendUpdate(

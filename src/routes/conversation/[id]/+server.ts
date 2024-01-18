@@ -189,7 +189,6 @@ export async function POST({ request, locals, params, getClientAddress }) {
 			const updates: MessageUpdate[] = [];
 
 			function update(newUpdate: MessageUpdate) {
-				console.log("Got new update", JSON.stringify(newUpdate, null, 2))
 				if (newUpdate.type !== "stream") {
 					updates.push(newUpdate);
 				}
@@ -301,6 +300,7 @@ export async function POST({ request, locals, params, getClientAddress }) {
 					}
 				}
 			} catch (e) {
+				console.log("Got error", JSON.stringify(e, null, 2))
 				update({ type: "status", status: "error", message: (e as Error).message });
 			}
 			await collections.conversations.updateOne(
