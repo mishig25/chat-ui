@@ -241,6 +241,7 @@ export async function POST({ request, locals, params, getClientAddress }) {
 			conv.messages = messages;
 
 			try {
+				console.log("Conv INITIAL", JSON.stringify(conv, null, 2));
 				const endpoint = await model.getEndpoint();
 				for await (const output of await endpoint({ conversation: conv })) {
 					// if not generated_text is here it means the generation is not done
@@ -300,7 +301,8 @@ export async function POST({ request, locals, params, getClientAddress }) {
 					}
 				}
 			} catch (e) {
-				console.log("Got error", JSON.stringify(e, null, 2))
+				console.log("Conv FAILED", JSON.stringify(conv, null, 2));
+				console.log("Got error", JSON.stringify(e, null, 2));
 				update({ type: "status", status: "error", message: (e as Error).message });
 			}
 			await collections.conversations.updateOne(
