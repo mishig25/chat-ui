@@ -125,7 +125,13 @@ export async function runWebSearch(
 				[JSON.stringify(searchError.message)],
 				"error"
 			);
-		}
+		}else{
+			console.log({searchError})
+			appendUpdate(
+				"An error occurred with the web search that is not instanceof Error",
+				["some error"],
+				"error"
+			);
 	}
 
 	return webSearch;
