@@ -128,6 +128,7 @@ export async function runWebSearch(
 				"error"
 			);
 		}else{
+			console.log("error captured not instanceof Error")
 			console.log({searchError})
 			appendUpdate(
 				"An error occurred with the web search that is not instanceof Error",
