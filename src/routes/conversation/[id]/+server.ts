@@ -189,6 +189,7 @@ export async function POST({ request, locals, params, getClientAddress }) {
 			const updates: MessageUpdate[] = [];
 
 			function update(newUpdate: MessageUpdate) {
+				console.log("Got new update", JSON.stringify(newUpdate, null, 2))
 				if (newUpdate.type !== "stream") {
 					updates.push(newUpdate);
 				}
