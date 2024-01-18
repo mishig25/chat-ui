@@ -106,6 +106,8 @@ export async function runWebSearch(
 		});
 		webSearch.context = indices.map((idx) => texts[idx]).join("");
 
+		console.log("webSearch.contex", webSearch.contex)
+
 		const usedSources = new Set<string>();
 		for (const idx of indices) {
 			const { source } = paragraphChunks[idx];
